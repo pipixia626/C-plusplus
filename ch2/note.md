@@ -4,18 +4,18 @@
 ### 算数类型
 #### 整型(包含字符和布尔类型）
 
-bool 布尔类型 未定义
-char 字符 8 位 signed char unsigned char
-wchar t 宽字符 16 位
-char16 t Unicode 字符 16 位
-char32 t Unicode 字符 32 位
-short 短整型 16 位
-int 整型 16 位
-long 长整型 32 位
-long long 长整型 64 位
-float 单精度浮点数 6 位有效数字
-double 双精度浮点数 10 位有效数字
-long double 扩展精度浮点数 10 位有效数字
+bool 布尔类型 未定义 <br>
+char 字符 8 位 signed char unsigned char <br>
+wchar t 宽字符 16 位 <br>
+char16 t Unicode 字符 16 位 <br>
+char32 t Unicode 字符 32 位 <br>
+short 短整型 16 位 <br>
+int 整型 16 位 <br>
+long 长整型 32 位  <br>
+long long 长整型 64 位  <br>
+float 单精度浮点数 6 位有效数字<br>
+double 双精度浮点数 10 位有效数字 <br>
+long double 扩展精度浮点数 10 位有效数字  <br>
 
 #### 浮点型
 单精度，双精度，扩展精度
@@ -40,9 +40,9 @@ long double 扩展精度浮点数 10 位有效数字
 变量只能被定义一次，但可以有多处声明
 
 如果想声明一个变量而非定义它，就在变量名前添加关键字 extern,而且不要显式
-地初始化变量：
-extern int i; //声明 i 而非定义 i
-int j; //声明并定义 j
+地初始化变量：<br>
+extern int i; //声明 i 而非定义 i <br>
+int j; //声明并定义 j  <br>
 
 任何包含了显式初始化的声明即成为定义。我们能给由 extern 关键字标记的变量赋
 一个初始值，但是这么做也就抵消了 extern 的作用。extern 语句如果包含初始值就不
