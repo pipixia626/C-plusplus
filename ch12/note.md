@@ -36,7 +36,7 @@ shared_ptr:允许多个指针指向同一个对象
 最安全的分配和使用动态内存的方法是调用一个名为 make_Shared 的标准库函数
 
 通常使用auto变量来保存make_shared对象
-`shared_ptr<int> p5 = make 一 shared<int>();`
+`shared_ptr<int> p5 = make_shared<int>();`
 ### shared_ptr 的拷贝和赋值
 
 当进行拷贝或赋值操作时，每个 shared_ptr 都会记录有多少个其他 shared_ptr 指向相
