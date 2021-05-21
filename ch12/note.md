@@ -67,7 +67,60 @@ shared_ptr<int> p2 (new int(1024)); // 正确：使用了直接初始化形式
 
 ### unique_ptr
 unique_ptr:独占所指向的对象
+某给时刻只能有一个unique_ptr 指向一个给定的对象，当unique_ptr被销毁时，它所指向的对象也被销毁
+
+#### 初始化
+只能采用之间初始化形式，不支持普通的拷贝或者赋值（除了快要被销毁时）
+但可以通过release或reset将指针的所有权除了一个非const转移给另一个
+
+
+
+
 ### weak_ptr
 weak_ptr:弱引用，指向shared_ptr所管理的对象
+是一种不控制所指向对象生存期的智能指针，指向一个由shared_ptr管理的对象，将一个weak_ptr绑定到一个shared_ptr不会改变其
+引用计数，一旦最后一个指向对象的shared_ptr被销毁，对象就会被释放，即使有weak_ptr指向对象，对象也还是会被释放
+类似共享对象的特点
+阻止访问不再存在的对象
 
 ## 动态数组
+
+### new和数组
+`
+typedef int arrT[42];
+int *p =new arrT;
+`
+`int *p =new int[42];
+`
+new T[]分配的内存为动态数组，我们并没有得到一个数组类型的对象，而是得到一个数组元素类型的指针
+但这里所指的动态数组并不是数组类型
+new 分配的对象，都是默认初始化的
+
+
+### 释放
+
+`
+typedef int arrT[42];
+int *p =new arrT;
+delete [] p
+`
+### 智能指针和动态数组
+
+`
+unique_ptr<int[]> up(new int [10]);
+up*release();//自动用delete[]销毁其指针
+`
+unique_ptr使用下标访问
+shared_Ptr管理一个动态数组时，必须提供自己定义的删除器
+
+`
+shared_ptr<int> sp(new int[10],[](int *p){delete[] p;});
+sp.reset();//使用lambda释放数组，使用delete[]
+`
+
+## allocator类
+new 有一些灵活性上的局限，一方面表现在它将内存分配和对象构造组合在一起，delete将对象析构和内存释放组合在一起
+当分配一大块内存时，通常需要按需构造对象，因此需要将内存分配和对象构造分离
+这意味着我们可以分配大块内存，但只在真正需要时才执行对象创建操作
+
+
