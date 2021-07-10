@@ -54,6 +54,13 @@ thePhones(phones) ,
 numTimesConsu1ted(O)//构造函数本体不必有任何动作
 ( }
 ```
+因此：
+为内置类型对象进行手工初始化
+
+构造函数最好使用成员初始值列，而不要在构造函数本体内使用赋值函数，其排列次序应该和它们在class中的声明次序相同
+以local static对象替换成non-local static对象（跨编译单元之初始化次序问题）
+
+
 
 
 
